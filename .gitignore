@@ -1,0 +1,12 @@
+# Original application (input), generated outputs and installer assets
+game/
+build/
+dl/
+analysis/
+assets/
+*.app
+*.dmg
+
+__pycache__/
+*.o
+.DS_Store

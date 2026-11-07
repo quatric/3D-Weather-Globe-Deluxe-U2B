@@ -1,0 +1,3 @@
+# functions the class macros, templates and the compiler generate
+00002276	LF::LValue::_classImp_::_alloc()
+000023c8	LF::LMap::_classImp_::_alloc()

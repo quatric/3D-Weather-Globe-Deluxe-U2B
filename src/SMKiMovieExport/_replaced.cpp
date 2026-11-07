@@ -1,0 +1,1 @@
+// The original's classes (iMovieExporter, the iMovie project file builder and parser, the DV track providers, MovieDataSource...) and QT_Atom helpers: QuickTime and iMovie HD formats, replaced by iMovieExport.mm (see Include/SMKiMovieExport.h). The decompiled worksheets are kept outside the tree.

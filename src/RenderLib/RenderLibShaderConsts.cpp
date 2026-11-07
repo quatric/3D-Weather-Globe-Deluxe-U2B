@@ -1,0 +1,59 @@
+// The shader constants RenderLib answers, registered by name for the render
+// profiles (the ids are the fourcc codes its _dataPtrForConstant methods test).
+
+#include "RenderLib.h"
+
+static ShaderConstantDef _shaderConstDef_FogParamsGlobe('FPGl', "FogParamsGlobe", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_GlobeTransparency('FPGm', "GlobeTransparency", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_ScaleFactor('CnSf', "ScaleFactor", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_HorizontParams('HoPs', "HorizontParams", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_GlowColor('HoPt', "GlowColor", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_AtmosphereMeshRotation('AtRt', "AtmosphereMeshRotation", 3, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_AtmosphereParameters('AtRu', "AtmosphereParameters", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_AtmosphereHorizontParameters('AtRv', "AtmosphereHorizontParameters", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_AtmosphereSunDirIntersection('AtRw', "AtmosphereSunDirIntersection", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_CloudsTransform('AtRx', "CloudsTransform", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_CloudsColorSun('AtRy', "CloudsColorSun", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_CloudsColorOpp('AtRz', "CloudsColorOpp", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_CloudsParams('AtR{', "CloudsParams", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_TextureTransforms('TTrn', "TextureTransforms", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_TextureTransforms1('TTro', "TextureTransforms1", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_NightGlowsColor('TTrp', "NightGlowsColor", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_BillboardSize('prqd', "BillboardSize", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_FarClipValue('fcvl', "FarClipValue", 2, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_BlendFactor('blfc', "BlendFactor", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_EclipseTxtMatrix('ETxM', "EclipseTxtMatrix", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_EclipseSunDirection('ETxN', "EclipseSunDirection", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_EclipseOffsetVec('ETxO', "EclipseOffsetVec", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_EclipseWorldX('ETxP', "EclipseWorldX", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_EclipseWorldY('ETxQ', "EclipseWorldY", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_EclipseVisibility('ETxR', "EclipseVisibility", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_GroundElementTransforms('GETr', "GroundElementTransforms", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_GridMatrices('GMMa', "GridMatrices", 32, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_AnimatedWaterParams('AnWP', "AnimatedWaterParams", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_AnimatedWaterDark('AnWQ', "AnimatedWaterDark", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_AnimatedWaterLight('AnWR', "AnimatedWaterLight", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_AnimatedWaterColorsDiff('AnWS', "AnimatedWaterColorsDiff", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_AnimatedWaterSpecular('AnWT', "AnimatedWaterSpecular", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_PreviewBBColor('HoPs', "PreviewBBColor", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_LightingColor('LgDC', "LightingColor", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_LightingImageIndex('LgIn', "LightingImageIndex", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_PlanetColor('PlCo', "PlanetColor", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_PushpinInstance('ppin', "PushpinInstance", 4, kShaderConstInstance, 0);
+static ShaderConstantDef _shaderConstDef_PushpinParams('pppm', "PushpinParams", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_ParticleColor('pcol', "ParticleColor", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_AboutTextureOffset('pcom', "AboutTextureOffset", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_MarkerSize('pcon', "MarkerSize", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_ConeRotation('CnRt', "ConeRotation", 3, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_ConePremul('CnRu', "ConePremul", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_GlowDark('CnRv', "GlowDark", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_GlowLight('CnRw', "GlowLight", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_GlowParameters('CnRx', "GlowParameters", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_MagnitudeThreshold('CnSm', "MagnitudeThreshold", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_StarsBillboardOffsets('CnSn', "StarsBillboardOffsets", 4, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_TimeProgress('PrPT', "TimeProgress", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_ClampedOffset('PrCO', "ClampedOffset", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_WindDirection('PrWD', "WindDirection", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_ParticleDiffuse('PrDf', "ParticleDiffuse", 1, kShaderConstEnvDepended, 0);
+static ShaderConstantDef _shaderConstDef_SystemFarDistance('PrFD', "SystemFarDistance", 1, kShaderConstDynamic, 0);
+static ShaderConstantDef _shaderConstDef_ParticleSizeMultiplier('PrSM', "ParticleSizeMultiplier", 1, kShaderConstDynamic, 0);

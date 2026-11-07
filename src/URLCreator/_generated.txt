@@ -1,0 +1,2 @@
+# functions the class macros, templates and the compiler generate
+00001b3a	LF::LDate::_classImp_::_alloc()

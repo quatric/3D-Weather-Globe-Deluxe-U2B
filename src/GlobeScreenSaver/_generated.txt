@@ -1,0 +1,2 @@
+# functions the class macros, templates and the compiler generate
+
